@@ -1,0 +1,60 @@
+{
+    "mappings": [
+        {
+            "request": {
+                "method": "POST",
+                "url": "/all_response/post"
+            },
+            "response": {
+                "status": 200,
+                "body": "{ \"Received headers.User-Agent\": {{request.headers.User-Agent}}, \n \"receivedBody\": {{request.body}} }",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "transformers": [
+                    "response-template"
+                ]
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "urlPathPattern": "/all_response/get",
+                "queryParameters": {
+                    "param1": {
+                        "matches": ".*"
+                    },
+                    "param2": {
+                        "matches": ".*"
+                    }
+                }
+            },
+            "response": {
+                "status": 200,
+                "body": "{ \"Received headers.User-Agent\": {{request.headers.User-Agent}}, \n \"param1\": {{request.query.param1}}, \n\"param2\": {{request.query.param2}} }",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "transformers": [
+                    "response-template"
+                ]
+            }
+        },
+        {
+            "request": {
+                "method": "PUT",
+                "url": "/all_response/put"
+            },
+            "response": {
+                "status": 200,
+                "body": "{ { \"Received headers.User-Agent\": {{request.headers.User-Agent}}, \n \"receivedBody\": {{request.body}} }",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "transformers": [
+                    "response-template"
+                ]
+            }
+        }
+    ]
+}
